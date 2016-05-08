@@ -1,0 +1,5 @@
+# -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 2; -*-
+
+---
+- name: apache_restart
+  service: name=apache2 state=restarted

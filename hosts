@@ -1,0 +1,11 @@
+[zabbix_servers]
+zabbix-server
+
+[zabbix_agents]
+zabbix-server
+wordpress1
+wordpress2
+
+[wordpress_servers]
+wordpress1
+wordpress2

@@ -1,0 +1,11 @@
+# -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 2; -*-
+
+---
+- name: (os=Ubuntu 14.04) Install MySQL server
+  apt: name=mysql-server,python-mysqldb state=present
+  when: ansible_os_family == 'Debian' and ansible_distribution_release == 'trusty'
+  register: mysql_install
+
+- name: (os=Ubuntu 14.04) Start MySQL server
+  service: name=mysql state=started enabled=yes
+  when: mysql_install is defined and mysql_install.changed

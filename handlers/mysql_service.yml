@@ -1,0 +1,11 @@
+# -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 2; -*-
+
+---
+- name: mysql_enable
+  service: name=mysql enabled=yes
+
+- name: mysql_restart
+  service: name=mysql state=restarted
+
+- name: mysql_start
+  service: name=mysql state=started

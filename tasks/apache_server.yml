@@ -1,0 +1,11 @@
+# -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 2; -*-
+
+---
+- name: (os=Ubuntu 14.04) Install Apache server
+  apt: name=apache2
+  when: ansible_os_family == 'Debian' and ansible_distribution_release == 'trusty'
+  register: apache_install
+
+- name: (os=Ubuntu 14.04) Enable and start Apache
+  service: name=apache2 state=started enabled=yes
+  when: ansible_os_family == 'Debian' and ansible_distribution_release == 'trusty'

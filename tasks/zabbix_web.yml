@@ -1,0 +1,16 @@
+  # -*- coding: utf-8; indent-tabs-mode: nil; tab-width: 2; -*-
+
+---
+- name: (os=Ubuntu 14.04) Install Zabbix web interface
+  apt: name=zabbix-frontend-php
+  when: ansible_os_family == "Debian" and ansible_distribution_release == "trusty"
+  notify:
+    - apache_restart
+
+- name: Configure Zabbix web interface
+  template: src=files/{{ item }} dest={{ item }} owner=root group=www-data mode=0640
+  with_items:
+    - /etc/zabbix/apache.conf
+    - /etc/zabbix/web/zabbix.conf.php
+  notify:
+    - apache_restart
